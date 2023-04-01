@@ -32,6 +32,10 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '...'],
+    alias: {
+      component: path.resolve(__dirname, 'src/component'),
+      share: path.resolve(__dirname, 'src/share'),
+    },
   },
 
   ...(isDevelopment

@@ -1,32 +1,21 @@
-import {button, div, p} from '@fusorjs/dom/html';
+// setup application in entry file
 
-const CounterButton = ({count = 0}) => {
-  // create button Component
-  const btn = button(
-    // props:
-    {
-      onclick: () => {
-        count += 1;
-        btn.update(); // update button text
-      },
-    },
+import {App} from 'component/App';
 
-    // children:
-    'Clicked ',
-    () => count, // dynamic value
-    ' times.',
-  );
+// GitHub Pages support hash routing
+let route = location.hash.substring(1);
 
-  return btn;
-};
+const app = App({baseRoute: '#', getRoute: () => route});
 
-document.body.append(
-  div(
-    p('Hello World!'), // static DOM Element
-
-    // create dynamic components:
-    CounterButton({}),
-    CounterButton({count: 22}),
-    CounterButton({count: 333}),
-  ).element,
+// setup router
+window.addEventListener(
+  'popstate',
+  () => {
+    route = location.hash.substring(1);
+    app.update();
+  },
+  false,
 );
+
+// append application to the page
+document.body.append(app.element);
