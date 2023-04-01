@@ -1,6 +1,8 @@
-// setup application in entry file
+// setup application in this main entry file
 
 import {App} from 'component/App';
+
+import './index.css';
 
 // GitHub Pages support hash routing
 let route = location.hash.substring(1);

@@ -1,0 +1,6 @@
+/* setup global styles in this main style file */
+
+nav {
+  display: flex;
+  gap: 0.5em;
+}
