@@ -2,11 +2,12 @@ import {a, h1, main, nav} from '@fusorjs/dom/html';
 
 import {Router, splitRoute} from 'share/router';
 
-import {Routing} from 'component/Routing';
 import {ClickCounter} from 'component/ClickCounter';
 import {IntervalCounter} from 'component/IntervalCounter';
+import {Caching} from 'component/Caching';
+import {Routing} from 'component/Routing';
 
-const menu = {ClickCounter, Routing, IntervalCounter};
+const menu = {ClickCounter, IntervalCounter, Caching, Routing};
 
 type Step = keyof typeof menu;
 
@@ -17,7 +18,10 @@ export const App = ({baseRoute, getRoute}: Router) =>
     h1('Fusor DOM Recipes'),
 
     // menu navigation
-    nav(Object.keys(menu).map(step => a({href: baseRoute + step}, step))),
+    nav(
+      a({href: baseRoute}, 'home'),
+      Object.keys(menu).map(step => a({href: baseRoute + step}, step)),
+    ),
 
     // content depends on the current route
     () => {

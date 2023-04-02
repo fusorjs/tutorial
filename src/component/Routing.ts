@@ -7,10 +7,10 @@ const RouterInfo = ({baseRoute, getRoute}: Router) =>
 
 // define all steps to ease their management
 const startsStep = 'starts';
-const firstStep = 'first';
-const secondStep = 'second';
+const appleStep = 'apple';
+const orangeStep = 'orange';
 const nestedStep = 'nested';
-const defaultStep = firstStep;
+const defaultStep = appleStep;
 
 export const Routing = ({baseRoute, getRoute}: Router) =>
   section(
@@ -25,8 +25,8 @@ export const Routing = ({baseRoute, getRoute}: Router) =>
       a({href: baseRoute}, 'home'),
       a({href: baseRoute + startsStep + '123'}, startsStep + '123'),
       a({href: baseRoute + startsStep + '/abc'}, startsStep + '/abc'),
-      a({href: baseRoute + firstStep}, firstStep),
-      a({href: baseRoute + secondStep}, secondStep),
+      a({href: baseRoute + appleStep}, appleStep),
+      a({href: baseRoute + orangeStep}, orangeStep),
       a({href: baseRoute + nestedStep + '/uno'}, nestedStep + '/uno'),
       a({href: baseRoute + 'unknown'}, 'unknown'),
     ),
@@ -40,7 +40,6 @@ export const Routing = ({baseRoute, getRoute}: Router) =>
       // route starts with
       if (route?.startsWith(startsStep)) {
         const nextRoute = route.replace(startsStep, '');
-        console.log({route}); // todo double call
 
         return RouterInfo({
           baseRoute: baseRoute + startsStep,
@@ -52,8 +51,8 @@ export const Routing = ({baseRoute, getRoute}: Router) =>
 
       // predefined routes
       switch (step) {
-        case firstStep:
-        case secondStep:
+        case appleStep:
+        case orangeStep:
         case nestedStep:
           return RouterInfo({
             baseRoute: baseRoute + step + '/',

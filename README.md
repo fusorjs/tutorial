@@ -12,21 +12,42 @@ Initialize and configure your application in the entry file.
 
 See: [index.ts](src/index.ts).
 
+## Component
+
+Create component and use it multiple times.
+
+See: [ClickCounter.ts](src/component/ClickCounter.ts)
+
+## Caching
+
+Cache components in dynamic children.
+Otherwise on every update they will be re-created.
+
+See: [Caching](src/component/Caching.ts)
+
 ## Routing
 
-> In my opinion, routing does not need any abstraction. It will make things more complicated.
-
+- Setup routing: [index.ts](src/index.ts)
 - Automatic nested routing: [App.ts](src/component/App.ts)
 - More routing examples: [Routing.ts](src/component/Routing.ts)
+
+> Routing abstraction makes it more complicated, IMHO.
 
 ## Todo
 
 - different dynamic array children strategies
+- memoization
 - css usage
+- hello world
+- static vs dynamic
+- add descriptions with links to source files with ability to view them
 - http request with unmount
+- selected menu items with routing
+- button routing with history.pushState
 - interval counter with unmount
-- nested routing
 
 ## Done
 
-- counter button with dynamic counter: [ClickCounter.ts](src/component/ClickCounter.ts)
+- caching
+- basic routing
+- counter button with dynamic counter
