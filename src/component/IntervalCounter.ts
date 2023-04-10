@@ -25,6 +25,8 @@ export const IntervalCounter = (router: Router) => {
     h2('Intrval Counter'),
 
     p('Timer: ', () => count, ' seconds'),
+
+    p('Open the console and see the log. Then switch away to the other page.'),
   );
 
   return wrapper;

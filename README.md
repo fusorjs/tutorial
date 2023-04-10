@@ -46,10 +46,10 @@ See: [Caching](src/component/Caching.ts)
 - button routing with history.pushState
 - selected menu items with routing
 - proper http request with unmount, error handling, loading state
-- svg usage
 
 ## Done
 
+- svg usage
 - interval counter with unmount
 - caching
 - basic routing

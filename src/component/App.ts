@@ -7,6 +7,7 @@ import {ClickCounter} from 'component/ClickCounter';
 import {IntervalCounter} from 'component/IntervalCounter';
 import {Caching} from 'component/Caching';
 import {Routing} from 'component/Routing';
+import {Svg} from 'component/Svg';
 
 const menu = {
   Home,
@@ -14,6 +15,7 @@ const menu = {
   LifeCycle: IntervalCounter,
   Caching,
   Routing,
+  SVG: Svg,
 };
 
 type Step = keyof typeof menu;
