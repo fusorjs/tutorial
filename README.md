@@ -40,14 +40,17 @@ See: [Caching](src/component/Caching.ts)
 - css usage
 - hello world
 - static vs dynamic
+- publish
+- usage with custom elements
 - add descriptions with links to source files with ability to view them
-- http request with unmount
-- selected menu items with routing
 - button routing with history.pushState
-- interval counter with unmount
+- selected menu items with routing
+- proper http request with unmount, error handling, loading state
+- svg usage
 
 ## Done
 
+- interval counter with unmount
 - caching
 - basic routing
 - counter button with dynamic counter
