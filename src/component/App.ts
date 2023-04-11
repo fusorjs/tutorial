@@ -1,10 +1,11 @@
-import {a, h1, main, nav} from '@fusorjs/dom/html';
+import {a, h1, hr, main, nav} from '@fusorjs/dom/html';
 
 import {Router, splitRoute} from 'share/router';
 
 import {Home} from 'component/Home';
 import {ClickCounter} from 'component/ClickCounter';
 import {IntervalCounter} from 'component/IntervalCounter';
+import {Request} from 'component/Request';
 import {Caching} from 'component/Caching';
 import {Routing} from 'component/Routing';
 import {Svg} from 'component/Svg';
@@ -13,6 +14,7 @@ const menu = {
   Home,
   Component: ClickCounter,
   LifeCycle: IntervalCounter,
+  Request,
   Caching,
   Routing,
   SVG: Svg,
@@ -28,6 +30,8 @@ export const App = ({baseRoute, getRoute}: Router) =>
 
     // menu navigation
     nav(Object.keys(menu).map(step => a({href: baseRoute + step}, step))),
+
+    hr(),
 
     // content depends on the current route
     () => {

@@ -45,10 +45,10 @@ See: [Caching](src/component/Caching.ts)
 - add descriptions with links to source files with ability to view them
 - button routing with history.pushState
 - selected menu items with routing
-- proper http request with unmount, error handling, loading state
 
 ## Done
 
+- proper http request with unmount, error handling, loading state
 - svg usage
 - interval counter with unmount
 - caching

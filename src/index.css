@@ -1,6 +1,13 @@
 /* setup global styles in this main style file */
 
+/* this is a nice starting point https://watercss.kognise.dev/ */
+@import 'https://cdn.jsdelivr.net/npm/water.css@2/out/water.css';
+
 nav {
   display: flex;
-  gap: 0.5em;
+  gap: 0.7em;
+}
+
+.error {
+  color: red;
 }
