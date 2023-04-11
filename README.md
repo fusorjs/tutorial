@@ -46,6 +46,7 @@ See: [Caching](src/component/Caching.ts)
 
 ## Done
 
+- cache app page
 - button routing with history.pushState
 - selected menu items with routing
 - proper http request with unmount, error handling, loading state

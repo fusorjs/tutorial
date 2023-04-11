@@ -19,7 +19,11 @@ export const Caching = (router: Router) => {
     h4('Re-creates on every update'),
 
     div('one', () => Counter()),
-    div('array', () => [Counter(), Counter(), Counter()]),
+    div(
+      'array',
+      // todo remove span when ranges are ready
+      span(() => [Counter(), Counter(), Counter()]),
+    ),
 
     h4('Caches, but does not update'),
 
@@ -36,7 +40,11 @@ export const Caching = (router: Router) => {
       const arr = [Counter(), Counter(), Counter()];
       return [
         div('one', () => one.update()),
-        div('array', () => arr.map(i => i.update())),
+        div(
+          'array',
+          // todo remove span when ranges are ready
+          span(() => arr.map(i => i.update())),
+        ),
       ];
     })(),
 
@@ -49,9 +57,12 @@ export const Caching = (router: Router) => {
         div('one', () => one?.update() ?? (one = Counter())),
         div(
           'array',
-          () =>
-            arr?.map(i => i.update()) ??
-            (arr = [Counter(), Counter(), Counter()]),
+          // todo remove span when ranges are ready
+          span(
+            () =>
+              arr?.map(i => i.update()) ??
+              (arr = [Counter(), Counter(), Counter()]),
+          ),
         ),
       ];
     })(),

@@ -1,4 +1,5 @@
 import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
+import {Component as FComponent} from '@fusorjs/dom';
 
 import {Router, splitRoute} from 'share/router';
 
@@ -53,13 +54,23 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     hr(),
 
     // content depends on the current route
-    () => {
-      const Content = pageMap[selectedPage];
+    (() => {
+      let cachedPage: string;
+      let cachedContent: FComponent<HTMLElement> | HTMLElement;
 
-      return Content({
-        prevRoute: prevRoute + selectedPage + '/',
-        getNextRoute: () => nextRoute,
-      });
-    },
+      return () => {
+        if (cachedPage === selectedPage) {
+          cachedContent instanceof FComponent && cachedContent.update();
+        } else {
+          cachedPage = selectedPage;
+          cachedContent = pageMap[selectedPage]({
+            prevRoute: prevRoute + selectedPage + '/',
+            getNextRoute: () => nextRoute,
+          });
+        }
+
+        return cachedContent;
+      };
+    })(),
   );
 };

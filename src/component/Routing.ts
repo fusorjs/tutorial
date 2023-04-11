@@ -44,10 +44,12 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
 
   updateRoutes();
 
-  const Link = (page: Page, rest = '') =>
-    selectedPage === page
-      ? span(page + rest)
-      : a({href: prevRoute + page + rest}, page + rest);
+  const Link =
+    (page: Page, rest = '') =>
+    () =>
+      selectedPage === page
+        ? span(page + rest)
+        : a({href: prevRoute + page + rest}, page + rest);
 
   return section(
     updateRoutes,
