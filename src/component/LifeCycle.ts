@@ -1,14 +1,13 @@
-import {h, h2, p} from '@fusorjs/dom/html';
-import '@fusorjs/dom/life';
+import {h2, p} from '@fusorjs/dom/html';
+import {Life} from '@fusorjs/dom/life';
 
 import {Router} from 'share/router';
 
-export const IntervalCounter = (router: Router) => {
+export const LifeCycle = (router: Router) => {
   let count = 0;
   let timerId: NodeJS.Timer | undefined;
 
-  const wrapper = h(
-    'fusor-life',
+  const wrapper = Life(
     {
       connected$e: () => {
         timerId = setInterval(() => {

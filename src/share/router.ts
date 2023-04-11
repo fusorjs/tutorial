@@ -1,7 +1,7 @@
 /** Nested Router */
 export interface Router {
-  baseRoute: string;
-  getRoute: () => string;
+  prevRoute: string;
+  getNextRoute: () => string;
 }
 
 /** Split route into two parts by separator ("/"). */

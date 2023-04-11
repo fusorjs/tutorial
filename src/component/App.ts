@@ -3,45 +3,61 @@ import {a, h1, hr, main, nav} from '@fusorjs/dom/html';
 import {Router, splitRoute} from 'share/router';
 
 import {Home} from 'component/Home';
-import {ClickCounter} from 'component/ClickCounter';
-import {IntervalCounter} from 'component/IntervalCounter';
+import {Component} from 'component/Component';
+import {LifeCycle} from 'component/LifeCycle';
 import {Request} from 'component/Request';
 import {Caching} from 'component/Caching';
 import {Routing} from 'component/Routing';
 import {Svg} from 'component/Svg';
 
-const menu = {
+const pageMap = {
   Home,
-  Component: ClickCounter,
-  LifeCycle: IntervalCounter,
+  Component,
+  LifeCycle,
   Request,
   Caching,
   Routing,
   SVG: Svg,
 };
 
-type Step = keyof typeof menu;
+type Page = keyof typeof pageMap;
 
-const defaultStep: Step = 'Home';
+const defaultPage: Page = 'Home';
 
-export const App = ({baseRoute, getRoute}: Router) =>
-  main(
+export const App = ({prevRoute, getNextRoute}: Router) => {
+  let selectedPage: Page;
+  let nextRoute: string;
+
+  const updateRoutes = () => {
+    [selectedPage, nextRoute] = splitRoute(getNextRoute()) as any;
+    if (!(selectedPage in pageMap)) selectedPage = defaultPage;
+  };
+
+  updateRoutes();
+
+  return main(
+    updateRoutes,
+
     h1('Fusor DOM Recipes'),
 
     // menu navigation
-    nav(Object.keys(menu).map(step => a({href: baseRoute + step}, step))),
+    nav(
+      Object.keys(pageMap).map(
+        page => () =>
+          page === selectedPage ? page : a({href: prevRoute + page}, page),
+      ),
+    ),
 
     hr(),
 
     // content depends on the current route
     () => {
-      const [_s, nextRoute] = splitRoute(getRoute());
-      const step = _s in menu ? (_s as Step) : defaultStep;
-      const Content = menu[step];
+      const Content = pageMap[selectedPage];
 
       return Content({
-        baseRoute: baseRoute + step + '/',
-        getRoute: () => nextRoute,
+        prevRoute: prevRoute + selectedPage + '/',
+        getNextRoute: () => nextRoute,
       });
     },
   );
+};

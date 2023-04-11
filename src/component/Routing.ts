@@ -1,69 +1,78 @@
-import {a, div, h2, h3, nav, p, section} from '@fusorjs/dom/html';
+import {a, div, h2, h3, hr, nav, p, section, span} from '@fusorjs/dom/html';
 
 import {Router, splitRoute} from 'share/router';
 
-const RouterInfo = ({baseRoute, getRoute}: Router) =>
-  div(p('baseRoute: ', baseRoute), p('getRoute: ', getRoute));
+// define all page names to ease their management
+const homePage = 'home';
+const startsPage = 'starts';
+const anotherPage = 'another';
+const nestingPage = 'nesting';
 
-// define all steps to ease their management
-const startsStep = 'starts';
-const appleStep = 'apple';
-const orangeStep = 'orange';
-const nestedStep = 'nested';
-const defaultStep = appleStep;
+const pageMap = {
+  [homePage]: 'Welcome home!',
+  [startsPage]: `This page route starts with "${startsPage}".`,
+  [anotherPage]: 'Another page.',
+  [nestingPage]: 'Nesting page.',
+};
 
-export const Routing = ({baseRoute, getRoute}: Router) =>
-  section(
+type Page = keyof typeof pageMap;
+
+const defaultPage: Page = homePage;
+
+export const Routing = ({prevRoute, getNextRoute}: Router) => {
+  let selectedPage: Page;
+  let nextRoute: string;
+
+  const updateRoutes = () => {
+    const route = getNextRoute();
+    if (route?.startsWith(startsPage)) {
+      selectedPage = startsPage;
+      nextRoute = route.replace(startsPage, '');
+    } else {
+      [selectedPage, nextRoute] = splitRoute(getNextRoute()) as any;
+      if (!(selectedPage in pageMap)) selectedPage = defaultPage;
+    }
+  };
+
+  updateRoutes();
+
+  const Link = (page: Page, rest = '') =>
+    selectedPage === page
+      ? span(page + rest)
+      : a({href: prevRoute + page + rest}, page + rest);
+
+  return section(
+    updateRoutes,
+
     h2('Routing'),
 
     h3('Base Route'),
 
-    RouterInfo({baseRoute, getRoute}),
+    RouterInfo({prevRoute, getNextRoute}),
 
     // menu navigation
     nav(
-      a({href: baseRoute}, 'home'),
-      a({href: baseRoute + startsStep + '123'}, startsStep + '123'),
-      a({href: baseRoute + startsStep + '/abc'}, startsStep + '/abc'),
-      a({href: baseRoute + appleStep}, appleStep),
-      a({href: baseRoute + orangeStep}, orangeStep),
-      a({href: baseRoute + nestedStep + '/uno'}, nestedStep + '/uno'),
-      a({href: baseRoute + 'unknown'}, 'unknown'),
+      Link(homePage),
+      Link(startsPage, '123'),
+      Link(startsPage, '/abc'),
+      Link(anotherPage),
+      Link(nestingPage, '/uno'),
+      a({href: prevRoute + 'unknown'}, 'unknown'),
     ),
 
-    h3('Next Route'),
+    hr(),
 
     // content depends on the current route
-    () => {
-      const route = getRoute();
-
-      // route starts with
-      if (route?.startsWith(startsStep)) {
-        const nextRoute = route.replace(startsStep, '');
-
-        return RouterInfo({
-          baseRoute: baseRoute + startsStep,
-          getRoute: () => nextRoute,
-        });
-      }
-
-      const [step, nextRoute] = splitRoute(route);
-
-      // predefined routes
-      switch (step) {
-        case appleStep:
-        case orangeStep:
-        case nestedStep:
-          return RouterInfo({
-            baseRoute: baseRoute + step + '/',
-            getRoute: () => nextRoute,
-          });
-      }
-
-      // default route
-      return RouterInfo({
-        baseRoute: baseRoute + defaultStep + '/',
-        getRoute: () => nextRoute,
-      });
-    },
+    () =>
+      section(
+        h3(pageMap[selectedPage]),
+        RouterInfo({
+          prevRoute: prevRoute + selectedPage + '/',
+          getNextRoute: () => nextRoute,
+        }),
+      ),
   );
+};
+
+const RouterInfo = ({prevRoute, getNextRoute}: Router) =>
+  div(p('baseRoute: ', prevRoute), p('getRoute: ', getNextRoute));

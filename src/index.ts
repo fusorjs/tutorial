@@ -5,15 +5,15 @@ import {App} from 'component/App';
 import './index.css';
 
 // GitHub Pages support hash routing
-let route = location.hash.substring(1);
+let nextRoute = location.hash.substring(1);
 
-const app = App({baseRoute: '#', getRoute: () => route});
+const app = App({prevRoute: '#', getNextRoute: () => nextRoute});
 
 // setup router
 window.addEventListener(
   'popstate',
   () => {
-    route = location.hash.substring(1);
+    nextRoute = location.hash.substring(1);
     app.update();
   },
   false,

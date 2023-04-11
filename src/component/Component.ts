@@ -22,7 +22,7 @@ const CounterButton = ({count = 0}) => {
   return btn;
 };
 
-export const ClickCounter = (router: Router) =>
+export const Component = (router: Router) =>
   section(
     h2('Click Counter'), // static DOM Element
 
