@@ -3,7 +3,6 @@ import {
   button,
   div,
   h2,
-  hr,
   p,
   section,
   table,
@@ -65,8 +64,6 @@ export const Request = (router: Router) => {
         click$e: () => abort?.abort(),
       }),
     ),
-
-    hr(),
 
     div(
       () => loading && p('Loading...'),

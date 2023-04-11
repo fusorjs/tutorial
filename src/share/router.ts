@@ -12,3 +12,10 @@ export const splitRoute = (route: string, separator = '/') => {
 
   return [route.slice(0, index), route.slice(index + 1)];
 };
+
+const popStateEvent = new PopStateEvent('popstate');
+
+export const pushRoute = (route: string) => {
+  history.pushState(undefined, '', route);
+  dispatchEvent(popStateEvent);
+};

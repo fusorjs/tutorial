@@ -1,4 +1,4 @@
-import {a, h1, hr, main, nav} from '@fusorjs/dom/html';
+import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
 
 import {Router, splitRoute} from 'share/router';
 
@@ -44,7 +44,9 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     nav(
       Object.keys(pageMap).map(
         page => () =>
-          page === selectedPage ? page : a({href: prevRoute + page}, page),
+          page === selectedPage
+            ? span(page)
+            : a({href: prevRoute + page}, page),
       ),
     ),
 

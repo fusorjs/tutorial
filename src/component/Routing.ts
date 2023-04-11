@@ -1,23 +1,31 @@
-import {a, div, h2, h3, hr, nav, p, section, span} from '@fusorjs/dom/html';
+import {
+  a,
+  button,
+  div,
+  h2,
+  h3,
+  hr,
+  nav,
+  p,
+  section,
+  span,
+} from '@fusorjs/dom/html';
 
-import {Router, splitRoute} from 'share/router';
+import {pushRoute, Router, splitRoute} from 'share/router';
 
-// define all page names to ease their management
-const homePage = 'home';
 const startsPage = 'starts';
 const anotherPage = 'another';
-const nestingPage = 'nesting';
 
 const pageMap = {
-  [homePage]: 'Welcome home!',
+  home: 'Welcome home!',
   [startsPage]: `This page route starts with "${startsPage}".`,
-  [anotherPage]: 'Another page.',
-  [nestingPage]: 'Nesting page.',
+  [anotherPage]: 'Another page, hey!',
+  nesting: 'Nesting page.',
 };
 
 type Page = keyof typeof pageMap;
 
-const defaultPage: Page = homePage;
+const defaultPage: Page = 'home';
 
 export const Routing = ({prevRoute, getNextRoute}: Router) => {
   let selectedPage: Page;
@@ -46,18 +54,23 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
 
     h2('Routing'),
 
-    h3('Base Route'),
+    h3('My Route'),
 
     RouterInfo({prevRoute, getNextRoute}),
 
     // menu navigation
     nav(
-      Link(homePage),
+      Link('home'),
       Link(startsPage, '123'),
       Link(startsPage, '/abc'),
       Link(anotherPage),
-      Link(nestingPage, '/uno'),
+      Link('nesting', '/uno'),
       a({href: prevRoute + 'unknown'}, 'unknown'),
+      a({href: prevRoute}, 'top'),
+      button(anotherPage, {
+        click$e: () => pushRoute(prevRoute + anotherPage),
+        disabled: () => selectedPage === anotherPage,
+      }),
     ),
 
     hr(),
@@ -75,4 +88,4 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
 };
 
 const RouterInfo = ({prevRoute, getNextRoute}: Router) =>
-  div(p('baseRoute: ', prevRoute), p('getRoute: ', getNextRoute));
+  div(p('prevRoute: ', prevRoute), p('nextRoute: ', getNextRoute));

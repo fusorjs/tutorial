@@ -43,10 +43,10 @@ See: [Caching](src/component/Caching.ts)
 - publish
 - usage with custom elements
 - add descriptions with links to source files with ability to view them
-- button routing with history.pushState
 
 ## Done
 
+- button routing with history.pushState
 - selected menu items with routing
 - proper http request with unmount, error handling, loading state
 - svg usage
