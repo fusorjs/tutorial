@@ -2,7 +2,6 @@ import {
   a,
   button,
   div,
-  h2,
   p,
   section,
   table,
@@ -47,10 +46,8 @@ export const Request = (router: Router) => {
   };
 
   const wrapper = section(
-    h2('Request'),
-
     p(
-      'This is a proper way to do requests. With loading state, aborting and error handling.',
+      'This is a proper way to do api requests. Using loading state, aborting and handling errors.',
     ),
 
     div(

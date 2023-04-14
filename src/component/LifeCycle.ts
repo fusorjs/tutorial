@@ -1,4 +1,4 @@
-import {h2, p} from '@fusorjs/dom/html';
+import {p} from '@fusorjs/dom/html';
 import {Life} from '@fusorjs/dom/life';
 
 import {Router} from 'share/router';
@@ -21,7 +21,9 @@ export const LifeCycle = (router: Router) => {
       },
     },
 
-    h2('Intrval Counter'),
+    p(
+      'Here we have a simple interval counter component. We start counting when it is attached to the DOM and stop counting when it is removed from the DOM. If we do not remove it, it will count forever leaking memory.',
+    ),
 
     p('Timer: ', () => count, ' seconds'),
 

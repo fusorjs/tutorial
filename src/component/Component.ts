@@ -1,4 +1,4 @@
-import {button, h2, section} from '@fusorjs/dom/html';
+import {button, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 
@@ -22,9 +22,11 @@ const CounterButton = ({count = 0}) => {
   return btn;
 };
 
-export const Component = (router: Router) =>
+export const Component = (_: Router) =>
   section(
-    h2('Click Counter'), // static DOM Element
+    p(
+      'Here we create a counting button component and instantiate it three times with different initial counter variables.',
+    ), // static DOM Element
 
     // create dynamic components:
     CounterButton({}),

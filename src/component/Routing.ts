@@ -1,17 +1,8 @@
-import {
-  a,
-  button,
-  div,
-  h2,
-  h3,
-  hr,
-  nav,
-  p,
-  section,
-  span,
-} from '@fusorjs/dom/html';
+import {a, button, div, h4, hr, nav, p, section, span} from '@fusorjs/dom/html';
 
 import {pushRoute, Router, splitRoute} from 'share/router';
+
+import {SourceLink} from './SourceLink';
 
 const startsPage = 'starts';
 const anotherPage = 'another';
@@ -54,9 +45,15 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
   return section(
     updateRoutes,
 
-    h2('Routing'),
+    p(
+      'This is an example of how nested routing could be implemented. This page is the third level, the second level is in ',
+      SourceLink(`component/App.ts`, 'App.ts'),
+      ', and the first level is in the ',
+      SourceLink(`index.ts`, 'index.ts'),
+      ' with router setup.',
+    ),
 
-    h3('My Route'),
+    h4('My Route'),
 
     RouterInfo({prevRoute, getNextRoute}),
 
@@ -80,7 +77,7 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
     // content depends on the current route
     () =>
       section(
-        h3(pageMap[selectedPage]),
+        h4(pageMap[selectedPage]),
         RouterInfo({
           prevRoute: prevRoute + selectedPage + '/',
           getNextRoute: () => nextRoute,

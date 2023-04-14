@@ -2,6 +2,8 @@ import {a, code, h4, p, pre, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 
+import {SourceLink} from './SourceLink';
+
 export const Setup = (_: Router) =>
   section(
     h4('Using a bundler'),
@@ -33,5 +35,11 @@ document.body.append(
         target: '_blank',
       }),
       '.',
+    ),
+
+    p(
+      'Also, see the ',
+      SourceLink(`index.ts`, 'index.ts'),
+      ', it is used to setup this application.',
     ),
   );

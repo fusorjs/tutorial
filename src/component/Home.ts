@@ -6,11 +6,11 @@ export const Home = (_: Router) =>
   section(
     p(
       'This is a tutorial application for the ',
-      a('Fusor', {
+      a('Fusor Javascript library', {
         href: 'https://github.com/fusorjs/dom#readme',
         target: '_blank',
       }),
-      ' Javascript library.',
+      '.',
     ),
 
     p(
@@ -21,5 +21,9 @@ export const Home = (_: Router) =>
       'This page itself serves as an example of the most basic Fusor usage. Here Fusor generates a ',
       b('static'),
       ' HTML page. It does not have any dynamically updated data.',
+    ),
+
+    p(
+      'You can view the source code of this page and play with it. Check out the links at the bottom of the page.',
     ),
   );
