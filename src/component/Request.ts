@@ -73,7 +73,6 @@ export const Request = (router: Router) => {
         table(
           thead(tr(th('Id'), th('User'), th('Name'), th('Email'))),
           tbody(data.map(i => UserRow(i))),
-          {style: 'width:auto'},
         ),
     ),
 

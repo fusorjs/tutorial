@@ -8,6 +8,15 @@ nav {
   gap: 0.7em;
 }
 
+table {
+  width: auto;
+}
+
+pre {
+  display: inline-block;
+  margin: 0;
+}
+
 .error {
   color: red;
 }

@@ -2,8 +2,6 @@ import {a, b, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 
-import {SourceLink} from './SourceLink';
-
 export const Home = (_: Router) =>
   section(
     p(
@@ -23,20 +21,5 @@ export const Home = (_: Router) =>
       'This page itself serves as an example of the most basic Fusor usage. Here Fusor generates a ',
       b('static'),
       ' HTML page. It does not have any dynamically updated data.',
-    ),
-
-    p(
-      'You can check out the ',
-      SourceLink('component/Home.ts', 'source code'),
-      ' for this page to see how it is done.',
-    ),
-
-    p(
-      'Also, check the ',
-      a('Github Repository', {
-        href: 'https://github.com/fusorjs/tutorial#readme',
-        target: '_blank',
-      }),
-      ' of this project.',
     ),
   );

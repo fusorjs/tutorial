@@ -4,21 +4,24 @@ import {Component as FComponent} from '@fusorjs/dom';
 import {Router, splitRoute} from 'share/router';
 
 import {Home} from 'component/Home';
+import {Setup} from 'component/Setup';
 import {Component} from 'component/Component';
 import {LifeCycle} from 'component/LifeCycle';
 import {Request} from 'component/Request';
 import {Caching} from 'component/Caching';
 import {Routing} from 'component/Routing';
 import {Svg} from 'component/Svg';
+import {SourceLink} from './SourceLink';
 
 const pageMap = {
   Home,
+  Setup,
   Component,
   LifeCycle,
   Request,
   Caching,
   Routing,
-  SVG: Svg,
+  Svg,
 };
 
 type Page = keyof typeof pageMap;
@@ -72,5 +75,23 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
         return cachedContent;
       };
     })(),
+
+    hr(),
+
+    nav(
+      a('Github', {
+        href: 'https://github.com/fusorjs/tutorial#readme',
+        target: '_blank',
+      }),
+      '-',
+      () => SourceLink(`component/${selectedPage}.ts`, 'Page Source'),
+      '-',
+      () =>
+        a('Playground', {
+          href: `https://codesandbox.io/s/fusor-tutorial-fmm2pd?file=/src/component/${selectedPage}.ts`,
+          target: '_blank',
+        }),
+      {style: 'justify-content:center'},
+    ),
   );
 };
