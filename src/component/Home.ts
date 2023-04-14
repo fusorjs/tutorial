@@ -1,9 +1,42 @@
-import {h2, section} from '@fusorjs/dom/html';
+import {a, b, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 
-export const Home = (router: Router) =>
+import {SourceLink} from './SourceLink';
+
+export const Home = (_: Router) =>
   section(
-    h2('Home'),
-    //
+    p(
+      'This is a tutorial application for the ',
+      a('Fusor', {
+        href: 'https://github.com/fusorjs/dom#readme',
+        target: '_blank',
+      }),
+      ' Javascript library.',
+    ),
+
+    p(
+      'Each page in the top menu represents a specific topic of application development with Fusor. You should progress in learning these topics from the more basic on the left to the more advanced on the right.',
+    ),
+
+    p(
+      'This page itself serves as an example of the most basic Fusor usage. Here Fusor generates a ',
+      b('static'),
+      ' HTML page. It does not have any dynamically updated data.',
+    ),
+
+    p(
+      'You can check out the ',
+      SourceLink('component/Home.ts', 'source code'),
+      ' for this page to see how it is done.',
+    ),
+
+    p(
+      'Also, check the ',
+      a('Github Repository', {
+        href: 'https://github.com/fusorjs/tutorial#readme',
+        target: '_blank',
+      }),
+      ' of this project.',
+    ),
   );

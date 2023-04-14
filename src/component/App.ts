@@ -39,7 +39,7 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
   return main(
     updateRoutes,
 
-    h1('Fusor DOM Recipes'),
+    h1('Fusor Tutorial'),
 
     // menu navigation
     nav(

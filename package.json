@@ -1,7 +1,7 @@
 {
-  "name": "@fusorjs/dom-recipes",
+  "name": "@fusorjs/tutorial",
   "version": "1.0.0",
-  "description": "Fusor DOM recipes",
+  "description": "Fusor DOM tutorial",
   "license": "ISC",
   "author": "Igor Sukharev <imixaly4@gmail.com>",
   "keywords": [
@@ -9,7 +9,7 @@
     "fusorjs",
     "@fusorjs",
     "dom",
-    "recipes"
+    "tutorial"
   ],
   "scripts": {
     "start": "NODE_ENV=development  webpack serve --open",

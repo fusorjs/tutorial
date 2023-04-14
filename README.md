@@ -1,8 +1,6 @@
-# @fusorjs/dom-recipes
+# Fusor Tutorial
 
-Fusor DOM recipes.
-
-**[Demo Website](https://fusorjs.github.io/dom-recipes/)**
+**[Demo Website](https://fusorjs.github.io/tutorial/)**
 
 [Fusor DOM library](https://github.com/fusorjs/dom#readme)
 

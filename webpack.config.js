@@ -1,4 +1,5 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const isDevelopment = process.env.NODE_ENV?.trim() === 'development';
@@ -14,7 +15,12 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'Fusor DOM Recipes',
+      title: 'Fusor Tutorial',
+    }),
+    new webpack.DefinePlugin({
+      'process.env.SOURCE_FILE_ROOT': JSON.stringify(
+        process.env.SOURCE_FILE_ROOT?.trim(),
+      ),
     }),
   ],
   module: {
