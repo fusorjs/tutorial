@@ -10,7 +10,7 @@ const anotherPage = 'another';
 const pageMap = {
   home: 'Welcome home!',
   [startsPage]: `This page route starts with "${startsPage}".`,
-  [anotherPage]: 'Another page, hey!',
+  [anotherPage]: 'Another page, yay!',
   nesting: 'Nesting page.',
 };
 

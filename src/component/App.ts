@@ -3,14 +3,15 @@ import {Component as FComponent} from '@fusorjs/dom';
 
 import {Router, splitRoute} from 'share/router';
 
-import {Home} from 'component/Home';
-import {Setup} from 'component/Setup';
-import {Component} from 'component/Component';
-import {LifeCycle} from 'component/LifeCycle';
-import {Request} from 'component/Request';
-import {Caching} from 'component/Caching';
-import {Routing} from 'component/Routing';
-import {Svg} from 'component/Svg';
+import {Home} from './Home';
+import {Setup} from './Setup';
+import {Component} from './Component';
+import {LifeCycle} from './LifeCycle';
+import {Request} from './Request';
+import {Caching} from './Caching';
+import {Routing} from './Routing';
+import {WebComponent} from './WebComponent';
+import {Svg} from './Svg';
 import {SourceLink} from './SourceLink';
 
 const pageMap = {
@@ -21,6 +22,7 @@ const pageMap = {
   Request,
   Caching,
   Routing,
+  WebComponent,
   Svg,
 };
 
@@ -78,6 +80,7 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
 
     hr(),
 
+    // footer links
     nav(
       a('Github', {
         href: 'https://github.com/fusorjs/tutorial#readme',

@@ -13,11 +13,10 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 - css usage
 - hello world
 - static vs dynamic
-- publish
-- usage with custom elements
 
 ## Done
 
+- usage with custom elements
 - add descriptions with links to source files with ability to view them
 - cache app page
 - button routing with history.pushState
