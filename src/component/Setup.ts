@@ -38,8 +38,8 @@ document.body.append(
     ),
 
     p(
-      'Also, see the ',
+      'Initialize and configure your application in an entry file. Check out this application entry file ',
       SourceLink(`index.ts`, 'index.ts'),
-      ', it is used to setup this application.',
+      '.',
     ),
   );

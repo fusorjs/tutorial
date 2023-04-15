@@ -12,7 +12,8 @@ const Counter = (count = 0) => span(' ', () => ++count);
 export const Caching = (router: Router) => {
   const wrapper = section(
     p(
-      'Here is an example of how to use dynamic values, update them, and cache them.',
+      `Here is an example of how to use dynamic values, update them, and cache them. Cache components in dynamic children.
+      Otherwise, on every update they will be re-created.`,
     ),
 
     div('Not returned from function'),

@@ -50,7 +50,7 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
       SourceLink(`component/App.ts`, 'App.ts'),
       ', and the first level is in the ',
       SourceLink(`index.ts`, 'index.ts'),
-      ' with router setup.',
+      ' with router setup. GitHub Pages supports only "hash" routing.',
     ),
 
     h4('My Route'),

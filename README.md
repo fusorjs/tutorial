@@ -1,35 +1,10 @@
 # Fusor Tutorial
 
-**[Demo Website](https://fusorjs.github.io/tutorial/)**
+This is a tutorial application for the [Fusor Javascript library](https://github.com/fusorjs/dom#readme).
 
-[Fusor DOM library](https://github.com/fusorjs/dom#readme)
+**[Demo Website Application](https://fusorjs.github.io/tutorial/)**
 
-## Setup
-
-Initialize and configure your application in the entry file.
-
-See: [index.ts](src/index.ts).
-
-## Component
-
-Create component and use it multiple times.
-
-See: [ClickCounter.ts](src/component/ClickCounter.ts)
-
-## Caching
-
-Cache components in dynamic children.
-Otherwise on every update they will be re-created.
-
-See: [Caching](src/component/Caching.ts)
-
-## Routing
-
-- Setup routing: [index.ts](src/index.ts)
-- Automatic nested routing: [App.ts](src/component/App.ts)
-- More routing examples: [Routing.ts](src/component/Routing.ts)
-
-> Routing abstraction makes it more complicated, IMHO.
+**[Codesandbox Playground](https://codesandbox.io/s/fusor-tutorial-fmm2pd)**
 
 ## Todo
 
@@ -40,10 +15,10 @@ See: [Caching](src/component/Caching.ts)
 - static vs dynamic
 - publish
 - usage with custom elements
-- add descriptions with links to source files with ability to view them
 
 ## Done
 
+- add descriptions with links to source files with ability to view them
 - cache app page
 - button routing with history.pushState
 - selected menu items with routing
