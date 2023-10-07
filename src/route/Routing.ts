@@ -1,8 +1,7 @@
 import {a, button, div, h4, hr, nav, p, section, span} from '@fusorjs/dom/html';
 
 import {pushRoute, Router, splitRoute} from 'share/router';
-
-import {SourceLink} from './SourceLink';
+import {SourceLink} from 'component/SourceLink';
 
 const startsPage = 'starts';
 const anotherPage = 'another';

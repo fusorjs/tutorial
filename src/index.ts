@@ -1,6 +1,6 @@
 // setup application in this main entry file
 
-import {App} from 'component/App';
+import {App} from 'route/App';
 
 import './index.css';
 

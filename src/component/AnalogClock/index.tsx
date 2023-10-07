@@ -3,7 +3,7 @@ import '@fusorjs/dom/life';
 
 import css from './index.module.css';
 
-// Inspired by https://thenewcode.com/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript
+// adapted from https://thenewcode.com/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript
 
 export const AnalogClock = () => {
   let secondsDegree: number;

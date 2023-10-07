@@ -2,7 +2,7 @@ import {Options} from '@fusorjs/dom';
 import {div, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
-import {SourceLink} from './SourceLink';
+import {SourceLink} from 'component/SourceLink';
 
 export const WebComponent = (_: Router) => {
   const wrapper = section(

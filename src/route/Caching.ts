@@ -2,8 +2,7 @@ import {Component} from '@fusorjs/dom';
 import {br, button, div, p, section, span} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
-
-import {SourceLink} from './SourceLink';
+import {SourceLink} from 'component/SourceLink';
 
 // this could be some heavy lifting component
 const Counter = (count = 0) => span(' ', () => ++count);

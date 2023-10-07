@@ -40,6 +40,7 @@ module.exports = {
     extensions: ['.ts', '.tsx', '...'],
     alias: {
       component: path.resolve(__dirname, 'src/component'),
+      route: path.resolve(__dirname, 'src/route'),
       share: path.resolve(__dirname, 'src/share'),
     },
   },

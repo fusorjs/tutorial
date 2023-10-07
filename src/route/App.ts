@@ -2,6 +2,7 @@ import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
 import {Component as FusorComponent} from '@fusorjs/dom';
 
 import {Router, splitRoute} from 'share/router';
+import {SourceLink} from 'component/SourceLink';
 
 import {Home} from './Home';
 import {Setup} from './Setup';
@@ -12,10 +13,9 @@ import {Caching} from './Caching';
 import {Routing} from './Routing';
 import {WebComponent} from './WebComponent';
 import {Svg} from './Svg';
-import {JsxRoute} from '../route/Jsx';
+import {Jsx} from './Jsx';
 
-import {SourceLink} from './SourceLink';
-
+// ! route component name must match its file name without extension, or have filename property difined (see: Jsx)
 const pageMap = {
   Home,
   Setup,
@@ -26,7 +26,7 @@ const pageMap = {
   Routing,
   WebComponent,
   Svg,
-  Jsx: JsxRoute,
+  Jsx,
 };
 
 type Page = keyof typeof pageMap;
@@ -90,14 +90,19 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
         target: '_blank',
       }),
       '-',
-      () => SourceLink(`component/${selectedPage}.ts`, 'Page Source'),
+      () => SourceLink(getRouteFilename(selectedPage), 'Page Source'),
       '-',
       () =>
         a('Playground', {
-          href: `https://codesandbox.io/s/fusor-tutorial-fmm2pd?file=/src/component/${selectedPage}.ts`,
+          href:
+            `https://codesandbox.io/s/fusor-tutorial-fmm2pd?file=/src/` +
+            getRouteFilename(selectedPage),
           target: '_blank',
         }),
       {style: 'justify-content:center'},
     ),
   );
 };
+
+const getRouteFilename = (name: Page) =>
+  `route/${(pageMap[name] as any).filename ?? name + '.ts'}`;

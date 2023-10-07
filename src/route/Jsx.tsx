@@ -1,8 +1,9 @@
 import {jsx} from '@fusorjs/dom';
 import '@fusorjs/dom/life';
+
 import {AnalogClock} from 'component/AnalogClock';
 
-export const JsxRoute = () => (
+export const Jsx = () => (
   <section style={'display:flex; flex-direction:column'}>
     <p>Here we are using JSX</p>
 
@@ -32,7 +33,13 @@ const CountingButton = ({init: state = 0}) => {
 };
 
 const OddOrEven = ({number}: {number: () => number}) => (
-  <span style={() => `color:${number() % 2 ? 'red' : 'green'}`}>
+  <span
+    style={() =>
+      `color:${
+        number() % 2 ? 'red' : 'green'
+      }; width:3em; text-align:center; display:inline-block`
+    }
+  >
     {() => (number() % 2 ? 'odd' : 'even')}
   </span>
 );
@@ -60,3 +67,5 @@ const IntervalCounter = () => {
 
   return wrapper;
 };
+
+Jsx.filename = 'Jsx.tsx';
