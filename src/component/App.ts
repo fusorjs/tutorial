@@ -1,5 +1,5 @@
 import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
-import {Component as FComponent} from '@fusorjs/dom';
+import {Component as FusorComponent} from '@fusorjs/dom';
 
 import {Router, splitRoute} from 'share/router';
 
@@ -12,6 +12,8 @@ import {Caching} from './Caching';
 import {Routing} from './Routing';
 import {WebComponent} from './WebComponent';
 import {Svg} from './Svg';
+import {JsxRoute} from '../route/Jsx';
+
 import {SourceLink} from './SourceLink';
 
 const pageMap = {
@@ -24,6 +26,7 @@ const pageMap = {
   Routing,
   WebComponent,
   Svg,
+  Jsx: JsxRoute,
 };
 
 type Page = keyof typeof pageMap;
@@ -61,11 +64,11 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     // content depends on the current route
     (() => {
       let cachedPage: string;
-      let cachedContent: FComponent<HTMLElement> | HTMLElement;
+      let cachedContent: FusorComponent<Element> | Element;
 
       return () => {
         if (cachedPage === selectedPage) {
-          cachedContent instanceof FComponent && cachedContent.update();
+          cachedContent instanceof FusorComponent && cachedContent.update();
         } else {
           cachedPage = selectedPage;
           cachedContent = pageMap[selectedPage]({

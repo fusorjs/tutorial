@@ -6,6 +6,8 @@
     "lib": ["ESNext", "DOM"],
     "module": "ESNext",
     "moduleResolution": "Node",
+    "jsx": "react",
+    "jsxFactory": "jsx",
     "skipLibCheck": true,
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
@@ -13,6 +15,7 @@
     "forceConsistentCasingInFileNames": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
+    "plugins": [{"name": "typescript-plugin-css-modules"}],
     "baseUrl": "src"
   },
   "include": ["src"]

@@ -1,5 +1,5 @@
 import {Options} from '@fusorjs/dom';
-import {div, h, p, section} from '@fusorjs/dom/html';
+import {div, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 import {SourceLink} from './SourceLink';

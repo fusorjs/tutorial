@@ -13,9 +13,12 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 - css usage
 - hello world
 - static vs dynamic
+- make Page Source link more obvious, maybe showing the source, embedding from codesandbox
+- when clicked on Playground link, also navigate on the same page in playground
 
 ## Done
 
+- jsx page
 - usage with custom elements
 - add descriptions with links to source files with ability to view them
 - cache app page

@@ -24,6 +24,6 @@ export const Home = (_: Router) =>
     ),
 
     p(
-      'You can view the source code of this page and play with it. Check out the links at the bottom of the page.',
+      'You can view the source code of this page and play with it. Check out the links below.',
     ),
   );

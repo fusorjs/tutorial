@@ -30,14 +30,14 @@ module.exports = {
         use: ['style-loader', 'css-loader'],
       },
       {
-        test: /\.ts$/,
+        test: /\.tsx?$/,
         use: 'ts-loader',
         exclude: /node_modules/,
       },
     ],
   },
   resolve: {
-    extensions: ['.ts', '...'],
+    extensions: ['.ts', '.tsx', '...'],
     alias: {
       component: path.resolve(__dirname, 'src/component'),
       share: path.resolve(__dirname, 'src/share'),
