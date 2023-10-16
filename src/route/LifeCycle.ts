@@ -5,7 +5,7 @@ import {Router} from 'share/router';
 
 export const LifeCycle = (router: Router) => {
   let count = 0;
-  let timerId: NodeJS.Timer | undefined;
+  let timerId: NodeJS.Timeout;
 
   const wrapper = Life(
     {

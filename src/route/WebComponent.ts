@@ -25,7 +25,7 @@ customElements.define(
   class extends HTMLDivElement {
     #count = 0;
     #wrapper = p('Timer: ', () => this.#count, ' seconds');
-    #timerId?: NodeJS.Timer;
+    #timerId?: NodeJS.Timeout;
 
     constructor() {
       super();

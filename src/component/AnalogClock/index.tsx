@@ -1,4 +1,4 @@
-import {jsx} from '@fusorjs/dom';
+import {Component, jsx} from '@fusorjs/dom';
 import '@fusorjs/dom/life';
 
 import css from './index.module.css';
@@ -20,7 +20,7 @@ export const AnalogClock = () => {
 
   updateDegrees();
 
-  let timerId: NodeJS.Timer | undefined;
+  let timerId: NodeJS.Timeout;
 
   const wrapper = (
     <fusor-life
@@ -68,7 +68,7 @@ export const AnalogClock = () => {
         </g>
       </svg>
     </fusor-life>
-  );
+  ) as Component<Element>;
 
   return wrapper;
 };

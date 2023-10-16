@@ -17,18 +17,18 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@fusorjs/dom": "^2.0.0"
+    "@fusorjs/dom": "^2.1.1"
   },
   "devDependencies": {
-    "css-loader": "^6.7.3",
-    "html-webpack-plugin": "^5.5.0",
-    "prettier": "^2.8.7",
-    "style-loader": "^3.3.2",
-    "ts-loader": "^9.4.2",
-    "typescript": "^5.0.3",
+    "css-loader": "^6.8.1",
+    "html-webpack-plugin": "^5.5.3",
+    "prettier": "^2.8.8",
+    "style-loader": "^3.3.3",
+    "ts-loader": "^9.5.0",
+    "typescript": "^5.2.2",
     "typescript-plugin-css-modules": "^5.0.1",
-    "webpack": "^5.77.0",
-    "webpack-cli": "^5.0.1",
-    "webpack-dev-server": "^4.13.1"
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
   }
 }
