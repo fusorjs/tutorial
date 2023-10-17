@@ -4,21 +4,19 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 
 **[Demo Website Application](https://fusorjs.github.io/tutorial/)**
 
-**[Codesandbox Playground](https://codesandbox.io/s/fusor-tutorial-fmm2pd)**
+**[Codesandbox Playground](https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd)**
 
 ## Build
 
 - .github/workflow: `SOURCE_FILE_ROOT=https://github.com/fusorjs/tutorial/blob/main/src/`
-- codesandbox: `SOURCE_FILE_ROOT=https://codesandbox.io/s/fusor-tutorial-fmm2pd?file=/src/`
+- codesandbox: `SOURCE_FILE_ROOT=https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd?file=/src/`
 
 ## Todo
 
 - different dynamic array children strategies
 - memoization
-- hello world
-- static vs dynamic
-- make Page Source link more obvious, maybe showing the source, embedding from codesandbox
-- when clicked on the Playground link, also navigate on the same page in playground preview
+- move TUTORIAL.md from github to this app
+- embed interactive playgrounds into pages with examples
 
 ## Done
 

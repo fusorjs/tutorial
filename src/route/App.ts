@@ -95,7 +95,7 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
       () =>
         a('Playground', {
           href:
-            `https://codesandbox.io/s/fusor-tutorial-fmm2pd?file=/src/` +
+            `https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd?file=/src/` +
             getRouteFilename(selectedPage),
           target: '_blank',
         }),
