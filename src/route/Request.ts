@@ -11,21 +11,18 @@ import {
   thead,
   tr,
 } from '@fusorjs/dom/html';
-import {Life} from '@fusorjs/dom/life';
 
 import {Router} from 'share/router';
 
 type User = {id: number; username: string; name: string; email: string};
 
 export const Request = (router: Router) => {
-  let loading = false;
   let data: User[] | undefined;
   let error: any;
   let abort: AbortController | undefined;
 
   const getUsers = async () => {
     try {
-      loading = true;
       data = undefined;
       error = undefined;
       abort = new AbortController();
@@ -40,30 +37,32 @@ export const Request = (router: Router) => {
     } catch (e) {
       error = e;
     } finally {
-      loading = false;
+      abort = undefined;
       wrapper.update();
     }
   };
 
   const wrapper = section(
+    {mount: () => () => abort?.abort()},
+
     p(
       'This is a proper way to do api requests. Using loading state, aborting and handling errors.',
     ),
 
     div(
       button('Request users', {
-        disabled: () => loading,
+        disabled: () => abort !== undefined,
         click$e: getUsers,
       }),
 
       button('Abort', {
-        disabled: () => !loading,
+        disabled: () => abort === undefined,
         click$e: () => abort?.abort(),
       }),
     ),
 
     div(
-      () => loading && p('Loading...'),
+      () => abort && p('Loading...'),
       () => error && p('Error: ', error?.message || error, {class: 'error'}),
       () =>
         data &&
@@ -72,8 +71,6 @@ export const Request = (router: Router) => {
           tbody(data.map(i => UserRow(i))),
         ),
     ),
-
-    Life({disconnected$e: () => abort?.abort()}),
   );
 
   return wrapper;

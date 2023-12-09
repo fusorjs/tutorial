@@ -1,4 +1,3 @@
-import {Options} from '@fusorjs/dom';
 import {div, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
@@ -12,7 +11,7 @@ export const WebComponent = (_: Router) => {
       ` example using a Web Component.`,
     ),
 
-    div(new Options({is: 'interval-counter'})),
+    div({is: 'interval-counter'}),
 
     p('Open the console and see the log. Then switch away to the other page.'),
   );

@@ -17,20 +17,11 @@ export const Jsx = () => (
   </section>
 );
 
-const CountingButton = ({init: state = 0}) => {
-  const component = (
-    <button
-      click$e={() => {
-        state += 1;
-        component.update();
-      }}
-    >
-      Clicked {() => state} <OddOrEven number={() => state} /> times
-    </button>
-  ) as Component<Element>;
-
-  return component;
-};
+const CountingButton = ({init: count = 0}) => (
+  <button click$e$update={() => (count += 1)}>
+    Clicked {() => count} <OddOrEven number={() => count} /> times
+  </button>
+);
 
 const OddOrEven = ({number}: {number: () => number}) => (
   <span

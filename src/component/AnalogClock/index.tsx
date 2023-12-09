@@ -1,5 +1,4 @@
-import {Component, jsx} from '@fusorjs/dom';
-import '@fusorjs/dom/life';
+import {jsx} from '@fusorjs/dom';
 
 import css from './index.module.css';
 
@@ -20,18 +19,14 @@ export const AnalogClock = () => {
 
   updateDegrees();
 
-  let timerId: NodeJS.Timeout;
-
-  const wrapper = (
-    <fusor-life
-      connected$e={() => {
-        timerId = setInterval(() => {
+  return (
+    <div
+      mount={self => {
+        const timerId = setInterval(() => {
           updateDegrees();
-          wrapper.update();
+          self.update();
         }, 1000);
-      }}
-      disconnected$e={() => {
-        clearInterval(timerId);
+        return () => clearInterval(timerId);
       }}
     >
       <svg viewBox="0 0 100 100">
@@ -67,8 +62,6 @@ export const AnalogClock = () => {
           />
         </g>
       </svg>
-    </fusor-life>
-  ) as Component<Element>;
-
-  return wrapper;
+    </div>
+  );
 };
