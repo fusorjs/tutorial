@@ -1,5 +1,4 @@
-import {Component, jsx} from '@fusorjs/dom';
-import {Life} from '@fusorjs/dom/life';
+import {Component} from '@fusorjs/dom';
 
 import {AnalogClock} from 'component/AnalogClock';
 
@@ -18,7 +17,7 @@ export const Jsx = () => (
 );
 
 const CountingButton = ({init: count = 0}) => (
-  <button click$e$update={() => (count += 1)}>
+  <button click_e_update={() => (count += 1)}>
     Clicked {() => count} <OddOrEven number={() => count} /> times
   </button>
 );
@@ -37,23 +36,22 @@ const OddOrEven = ({number}: {number: () => number}) => (
 
 const IntervalCounter = () => {
   let count = 0;
-  let timerId: NodeJS.Timeout;
 
   const wrapper = (
-    <Life
-      connected$e={() => {
-        timerId = setInterval(() => {
+    <div
+      mount={() => {
+        const timerId = setInterval(() => {
           count++;
           wrapper.update();
         }, 1000);
-      }}
-      disconnected$e={() => {
-        clearInterval(timerId);
+        return () => {
+          clearInterval(timerId);
+        };
       }}
     >
       Since this page was opened, {() => count}{' '}
       <OddOrEven number={() => count} /> seconds elapsed
-    </Life>
+    </div>
   ) as Component<Element>;
 
   return wrapper;

@@ -60,7 +60,7 @@ export const Caching = (router: Router) => {
     })(),
     br(),
 
-    button({click$e: () => wrapper.update()}, 'Update'),
+    button({click_e: () => wrapper.update()}, 'Update'),
 
     p(
       'Also, check the ',

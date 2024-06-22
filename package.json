@@ -17,7 +17,7 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
-    "@fusorjs/dom": "^2.2.2"
+    "@fusorjs/dom": "^2.3.1"
   },
   "devDependencies": {
     "css-loader": "^6.8.1",

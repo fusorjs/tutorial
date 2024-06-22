@@ -52,12 +52,12 @@ export const Request = (router: Router) => {
     div(
       button('Request users', {
         disabled: () => abort !== undefined,
-        click$e: getUsers,
+        click_e: getUsers,
       }),
 
       button('Abort', {
         disabled: () => abort === undefined,
-        click$e: () => abort?.abort(),
+        click_e: () => abort?.abort(),
       }),
     ),
 

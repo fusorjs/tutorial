@@ -7,7 +7,7 @@ const CounterButton = ({count = 0}) => {
   const btn = button(
     // props:
     {
-      click$e: () => {
+      click_e: () => {
         count += 1;
         btn.update(); // update button text
       },

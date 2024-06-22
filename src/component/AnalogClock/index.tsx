@@ -1,5 +1,3 @@
-import {jsx} from '@fusorjs/dom';
-
 import css from './index.module.css';
 
 // adapted from https://thenewcode.com/943/An-SVG-Analog-Clock-In-6-Lines-of-JavaScript

@@ -4,7 +4,7 @@ import {a as sa, animate, rect, svg, text} from '@fusorjs/dom/svg';
 import {Router} from 'share/router';
 
 // see: https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course
-const xlink_href = 'xlink:href$an$http://www.w3.org/1999/xlink';
+const xlink_href = 'xlink:href_an_http://www.w3.org/1999/xlink';
 
 export const Svg = (router: Router) =>
   section(

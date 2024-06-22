@@ -1,23 +1,22 @@
-import {p} from '@fusorjs/dom/html';
-import {Life} from '@fusorjs/dom/life';
+import {div, p} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 
 export const LifeCycle = (router: Router) => {
   let count = 0;
-  let timerId: NodeJS.Timeout;
 
-  const wrapper = Life(
+  const wrapper = div(
     {
-      connected$e: () => {
-        timerId = setInterval(() => {
+      mount: () => {
+        const timerId = setInterval(() => {
           count++;
           wrapper.update();
           console.log('Interval count', count);
         }, 1000);
-      },
-      disconnected$e: () => {
-        clearInterval(timerId);
+
+        return () => {
+          clearInterval(timerId);
+        };
       },
     },
 
@@ -33,7 +32,38 @@ export const LifeCycle = (router: Router) => {
   return wrapper;
 };
 
-// History of the unmount solution finding:
+// History of the "unmount" solution findings:
+
+/* Working with the deprecated <Life> component */
+// export const LifeCycle = (router: Router) => {
+//   let count = 0;
+//   let timerId: NodeJS.Timeout;
+
+//   const wrapper = Life(
+//     {
+//       connected$e: () => {
+//         timerId = setInterval(() => {
+//           count++;
+//           wrapper.update();
+//           console.log('Interval count', count);
+//         }, 1000);
+//       },
+//       disconnected$e: () => {
+//         clearInterval(timerId);
+//       },
+//     },
+
+//     p(
+//       'Here we have a simple interval counter component. We start counting when it is attached to the DOM and stop counting when it is removed from the DOM. If we do not remove it, it will count forever leaking memory.',
+//     ),
+
+//     p('Timer: ', () => count, ' seconds'),
+
+//     p('Open the console and see the log. Then switch away to the other page.'),
+//   );
+
+//   return wrapper;
+// };
 
 /* Working solution with custom element */
 // const wrapper = div(new Options({is: 'interval-counter'}));

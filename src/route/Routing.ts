@@ -66,7 +66,7 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
       a({href: prevRoute + 'unknown'}, 'unknown'),
       a({href: prevRoute}, 'top'),
       button(anotherPage, {
-        click$e: () => pushRoute(prevRoute + anotherPage),
+        click_e: () => pushRoute(prevRoute + anotherPage),
         disabled: () => selectedPage === anotherPage,
       }),
     ),
