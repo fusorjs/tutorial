@@ -1,14 +1,13 @@
-import {Component} from '@fusorjs/dom';
+import {Fusion, update} from '@fusorjs/dom';
 import {br, button, div, p, section, span} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
 
 // this could be some heavy lifting component
 const Counter = (count = 0) => span(' ', () => ++count);
 
 // different usage and caching strategies for components returned from functions.
-export const Caching = (router: Router) => {
+export const Caching = () => {
   const wrapper = section(
     p(
       `Here is an example of how to use dynamic values, update them, and cache them. Cache components in dynamic children.
@@ -33,27 +32,27 @@ export const Caching = (router: Router) => {
     })(),
     br(),
 
-    div('Caches and updates on init (twice), avoid it'),
+    div('Caches and updates on init (twice), incorrect'),
     (() => {
       const one = Counter();
       const arr = [Counter(), Counter(), Counter()];
       return [
-        div('one', () => one.update()),
-        div('array', () => arr.map(i => i.update())),
+        div('one', () => update(one)),
+        div('array', () => arr.map(i => update(i))),
       ];
     })(),
     br(),
 
     div('Caches on init and updates subsequently, correct'),
     (() => {
-      let one: Component<HTMLElement> | undefined;
-      let arr: Component<HTMLElement>[] | undefined;
+      let one: Fusion | undefined;
+      let arr: Fusion[] | undefined;
       return [
-        div('one', () => one?.update() ?? (one = Counter())),
+        div('one', () => (one ? update(one) : (one = Counter()))),
         div(
           'array',
           () =>
-            arr?.map(i => i.update()) ??
+            arr?.map(i => update(i)) ??
             (arr = [Counter(), Counter(), Counter()]),
         ),
       ];

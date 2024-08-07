@@ -1,18 +1,28 @@
+import {update} from '@fusorjs/dom';
 import {div, p} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
+export const LifeCycle = () =>
+  div(
+    p(
+      'Here we have a simple interval counter component. We start counting when it is attached to the DOM and stop counting when it is removed from the DOM. If we do not remove it, it will count forever leaking memory.',
+    ),
 
-export const LifeCycle = (router: Router) => {
+    IntervalCounter(),
+
+    p('Open the console and see the log. Then switch away to the other page.'),
+  );
+
+const IntervalCounter = ({interval = 1000} = {}) => {
   let count = 0;
 
-  const wrapper = div(
+  return div(
     {
-      mount: () => {
+      mount: self => {
         const timerId = setInterval(() => {
           count++;
-          wrapper.update();
-          console.log('Interval count', count);
-        }, 1000);
+          update(self);
+          console.log(`Elapsed ${count} seconds with ${interval} interval.`);
+        }, interval);
 
         return () => {
           clearInterval(timerId);
@@ -20,16 +30,8 @@ export const LifeCycle = (router: Router) => {
       },
     },
 
-    p(
-      'Here we have a simple interval counter component. We start counting when it is attached to the DOM and stop counting when it is removed from the DOM. If we do not remove it, it will count forever leaking memory.',
-    ),
-
-    p('Timer: ', () => count, ' seconds'),
-
-    p('Open the console and see the log. Then switch away to the other page.'),
+    p('Elapsed ', () => count, ' seconds with ', interval, ' interval.'),
   );
-
-  return wrapper;
 };
 
 // History of the "unmount" solution findings:

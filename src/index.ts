@@ -1,4 +1,5 @@
 // setup application in this main entry file
+import {getElement} from '@fusorjs/dom';
 
 import {App} from 'route/App';
 
@@ -20,4 +21,4 @@ window.addEventListener(
 );
 
 // append application to the page
-document.body.append(app.element);
+document.body.append(getElement(app));

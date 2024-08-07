@@ -16,7 +16,7 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 - different dynamic array children strategies
 - memoization
 - move TUTORIAL.md from github to this app
-- embed interactive playgrounds into pages with examples (use editor https://ace.c9.io/)
+- embed interactive playgrounds into pages with examples (use editor <https://ace.c9.io/>)
 
 ## Done
 

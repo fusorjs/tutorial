@@ -1,35 +1,65 @@
+import {update} from '@fusorjs/dom';
 import {button, p, section} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
+export const Component = () =>
+  section(
+    p(
+      'Here we create a counting button component and instantiate it several times with different initial counter values.',
+    ), // static DOM Element
 
-const CounterButton = ({count = 0}) => {
+    // create dynamic components:
+    CounterButton(),
+    CounterButton(22),
+    CounterButton(333),
+
+    p('Shorter component'),
+    CounterShorter(),
+    CounterShorter(22),
+    CounterShorter(333),
+
+    p('Shortest component'),
+    CounterShortest(),
+    CounterShortest(22),
+    CounterShortest(333),
+  );
+
+const CounterButton = (count = 0) => {
   // create button Component
   const btn = button(
     // props:
     {
       click_e: () => {
         count += 1;
-        btn.update(); // update button text
+        update(btn); // update button text
       },
     },
 
     // children:
     'Clicked ',
     () => count, // dynamic value
-    ' times.',
+    ' times',
   );
 
   return btn;
 };
 
-export const Component = (_: Router) =>
-  section(
-    p(
-      'Here we create a counting button component and instantiate it three times with different initial counter variables.',
-    ), // static DOM Element
+const CounterShorter = (count = 0) =>
+  button(
+    {
+      click_e: (event, self) => {
+        count += 1;
+        update(self);
+      },
+    },
+    'Clicked ',
+    () => count,
+    ' times',
+  );
 
-    // create dynamic components:
-    CounterButton({}),
-    CounterButton({count: 22}),
-    CounterButton({count: 333}),
+const CounterShortest = (count = 0) =>
+  button(
+    {click_e_update: () => (count += 1)},
+    'Clicked ',
+    () => count,
+    ' times',
   );

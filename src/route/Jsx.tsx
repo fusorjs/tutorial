@@ -1,4 +1,4 @@
-import {Component} from '@fusorjs/dom';
+import {update} from '@fusorjs/dom';
 
 import {AnalogClock} from 'component/AnalogClock';
 
@@ -7,8 +7,8 @@ export const Jsx = () => (
     <p>Here we are using JSX by the way</p>
 
     <CountingButton />
-    <CountingButton init={22} />
-    <CountingButton init={333} />
+    <CountingButton count={22} />
+    <CountingButton count={333} />
 
     <IntervalCounter />
 
@@ -16,7 +16,7 @@ export const Jsx = () => (
   </section>
 );
 
-const CountingButton = ({init: count = 0}) => (
+const CountingButton = ({count = 0}) => (
   <button click_e_update={() => (count += 1)}>
     Clicked {() => count} <OddOrEven number={() => count} /> times
   </button>
@@ -34,27 +34,21 @@ const OddOrEven = ({number}: {number: () => number}) => (
   </span>
 );
 
-const IntervalCounter = () => {
-  let count = 0;
-
-  const wrapper = (
-    <div
-      mount={() => {
-        const timerId = setInterval(() => {
-          count++;
-          wrapper.update();
-        }, 1000);
-        return () => {
-          clearInterval(timerId);
-        };
-      }}
-    >
-      Since this page was opened, {() => count}{' '}
-      <OddOrEven number={() => count} /> seconds elapsed
-    </div>
-  ) as Component<Element>;
-
-  return wrapper;
-};
+const IntervalCounter = ({count = 0}) => (
+  <div
+    mount={self => {
+      const timerId = setInterval(() => {
+        count++;
+        update(self);
+      }, 1000);
+      return () => {
+        clearInterval(timerId);
+      };
+    }}
+  >
+    Since this page was opened, {() => count} <OddOrEven number={() => count} />{' '}
+    seconds elapsed.
+  </div>
+);
 
 Jsx.filename = 'Jsx.tsx';

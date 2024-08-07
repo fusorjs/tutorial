@@ -7,12 +7,6 @@ const webpackPublicPath = process.env.WEBPACK_PUBLIC_PATH?.trim();
 
 module.exports = {
   entry: './src/index.ts',
-  output: {
-    filename: '[name].[contenthash].js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: webpackPublicPath ?? '/',
-    clean: true,
-  },
   plugins: [
     new HtmlWebpackPlugin({
       title: 'Fusor Tutorial',
@@ -23,19 +17,6 @@ module.exports = {
       ),
     }),
   ],
-  module: {
-    rules: [
-      {
-        test: /\.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /\.tsx?$/,
-        use: 'ts-loader',
-        exclude: /node_modules/,
-      },
-    ],
-  },
   resolve: {
     extensions: ['.ts', '.tsx', '...'],
     alias: {
@@ -43,6 +24,27 @@ module.exports = {
       route: path.resolve(__dirname, 'src/route'),
       share: path.resolve(__dirname, 'src/share'),
     },
+  },
+  module: {
+    rules: [
+      {
+        test: /\.tsx?$/i,
+        use: 'ts-loader',
+        exclude: /node_modules/,
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
+      },
+      {
+        test: /\.(png|svg|jpg|jpeg|gif)$/i,
+        type: 'asset/resource',
+      },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/i,
+        type: 'asset/resource',
+      },
+    ],
   },
 
   ...(isDevelopment
@@ -56,5 +58,11 @@ module.exports = {
       }
     : {
         mode: 'production',
+        output: {
+          filename: '[name].[contenthash].js',
+          path: path.resolve(__dirname, 'dist'),
+          publicPath: webpackPublicPath ?? '/',
+          clean: true,
+        },
       }),
 };

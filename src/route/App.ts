@@ -1,5 +1,5 @@
+import {Fusion, isUpdatable, update} from '@fusorjs/dom';
 import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
-import {Component as FusorComponent} from '@fusorjs/dom';
 
 import {Router, splitRoute} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
@@ -11,7 +11,7 @@ import {LifeCycle} from './LifeCycle';
 import {Request} from './Request';
 import {Caching} from './Caching';
 import {Routing} from './Routing';
-import {WebComponent} from './WebComponent';
+import {CustomElement} from './CustomElement';
 import {Svg} from './Svg';
 import {Jsx} from './Jsx';
 
@@ -24,7 +24,7 @@ const pageMap = {
   Request,
   Caching,
   Routing,
-  WebComponent,
+  CustomElement,
   Svg,
   Jsx,
 };
@@ -64,11 +64,11 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     // content depends on the current route
     (() => {
       let cachedPage: string;
-      let cachedContent: FusorComponent<Element> | Element;
+      let cachedContent: Fusion;
 
       return () => {
         if (cachedPage === selectedPage) {
-          cachedContent instanceof FusorComponent && cachedContent.update();
+          isUpdatable(cachedContent) && update(cachedContent);
         } else {
           cachedPage = selectedPage;
           cachedContent = pageMap[selectedPage]({

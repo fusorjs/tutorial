@@ -1,9 +1,10 @@
+import {getElement} from '@fusorjs/dom';
 import {div, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
 
-export const WebComponent = (_: Router) => {
+export const CustomElement = (_: Router) => {
   const wrapper = section(
     p(
       `Here we will re-implement our interval counter from the `,
@@ -28,7 +29,7 @@ customElements.define(
 
     constructor() {
       super();
-      this.attachShadow({mode: 'open'}).append(this.#wrapper.element);
+      this.attachShadow({mode: 'open'}).append(getElement(this.#wrapper));
     }
 
     connectedCallback() {
