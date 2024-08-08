@@ -1,7 +1,5 @@
 import {update} from '@fusorjs/dom';
 
-import {AnalogClock} from 'component/AnalogClock';
-
 export const Jsx = () => (
   <section style={'display:flex; flex-direction:column'}>
     <p>Here we are using JSX by the way</p>
@@ -11,8 +9,6 @@ export const Jsx = () => (
     <CountingButton count={333} />
 
     <IntervalCounter />
-
-    <AnalogClock />
   </section>
 );
 

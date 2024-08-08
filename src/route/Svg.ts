@@ -1,5 +1,6 @@
 import {a, p, section} from '@fusorjs/dom/html';
 import {a as sa, animate, rect, svg, text} from '@fusorjs/dom/svg';
+import {AnalogClock} from 'component/AnalogClock';
 
 import {Router} from 'share/router';
 
@@ -16,6 +17,10 @@ export const Svg = (router: Router) =>
       }),
       '.',
     ),
+
+    AnalogClock(),
+
+    p('Another example'),
 
     svg(
       {width: 200, height: 200}, //, viewBox: '0 0 100 100'

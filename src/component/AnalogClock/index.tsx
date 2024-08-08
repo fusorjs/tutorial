@@ -6,7 +6,7 @@ import css from './index.module.css';
 
 const rotate = (value: number) => `rotate(${value} 50 50)`;
 
-export const AnalogClock = ({date = new Date()}) => (
+export const AnalogClock = ({date = new Date()} = {}) => (
   <div
     mount={self => {
       const timerId = setInterval(() => {
