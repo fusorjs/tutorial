@@ -4,7 +4,7 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 
 **[Demo Website Application](https://fusorjs.github.io/tutorial/)**
 
-**[Codesandbox Playground](https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd)**
+<!-- **[Codesandbox Playground](https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd)** -->
 
 ## Build
 

@@ -59,7 +59,7 @@ export const Caching = () => {
     })(),
     br(),
 
-    button({click_e: () => wrapper.update()}, 'Update'),
+    button({click_e: () => update(wrapper)}, 'Update'),
 
     p(
       'Also, check the ',

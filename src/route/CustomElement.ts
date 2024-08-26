@@ -1,4 +1,4 @@
-import {getElement} from '@fusorjs/dom';
+import {getElement, update} from '@fusorjs/dom';
 import {div, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
@@ -35,7 +35,7 @@ customElements.define(
     connectedCallback() {
       this.#timerId = setInterval(() => {
         this.#count++;
-        this.#wrapper.update();
+        update(this.#wrapper);
         console.log('Interval count', this.#count);
       }, 1000);
     }

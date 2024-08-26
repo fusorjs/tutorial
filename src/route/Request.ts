@@ -1,3 +1,4 @@
+import {update} from '@fusorjs/dom';
 import {
   a,
   button,
@@ -26,7 +27,7 @@ export const Request = (router: Router) => {
       data = undefined;
       error = undefined;
       abort = new AbortController();
-      wrapper.update();
+      update(wrapper);
 
       const response = await fetch(
         'https://jsonplaceholder.typicode.com/users',
@@ -38,7 +39,7 @@ export const Request = (router: Router) => {
       error = e;
     } finally {
       abort = undefined;
-      wrapper.update();
+      update(wrapper);
     }
   };
 

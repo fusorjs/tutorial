@@ -1,5 +1,6 @@
 // setup application in this main entry file
-import {getElement} from '@fusorjs/dom';
+
+import {getElement, update} from '@fusorjs/dom';
 
 import {App} from 'route/App';
 
@@ -15,7 +16,7 @@ window.addEventListener(
   'popstate',
   () => {
     nextRoute = location.hash.substring(1);
-    app.update();
+    update(app);
   },
   false,
 );

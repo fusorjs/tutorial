@@ -16,11 +16,14 @@ export const Setup = (_: Router) =>
     pre(
       code(
         `\
+import {getElement} from '@fusorjs/dom';
 import {div, p} from "@fusorjs/dom/html";
 
 document.body.append(
-  div(
-    p("Hello World!"),
+  getElement(
+    div(
+      p("Hello World!"),
+    )
   )
 );
 `,
