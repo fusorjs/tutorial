@@ -1,5 +1,5 @@
 import {update} from '@fusorjs/dom';
-import {button, p, section} from '@fusorjs/dom/html';
+import {button, input, p, section} from '@fusorjs/dom/html';
 
 export const Component = () =>
   section(
@@ -21,6 +21,9 @@ export const Component = () =>
     CounterShortest(),
     CounterShortest(22),
     CounterShortest(333),
+
+    p('Controlled Input'),
+    UppercaseInput(),
   );
 
 const CounterButton = (count = 0) => {
@@ -63,3 +66,9 @@ const CounterShortest = (count = 0) =>
     () => count,
     ' times',
   );
+
+const UppercaseInput = ({value = ''} = {}) =>
+  input({
+    value: () => value,
+    input_e_update: event => (value = event.target.value.toUpperCase()),
+  });

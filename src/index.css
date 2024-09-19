@@ -1,7 +1,7 @@
 /* setup global styles in this main style file */
 
 /* this is a nice starting point https://watercss.kognise.dev/ */
-@import 'https://cdn.jsdelivr.net/npm/water.css@2/out/water.css';
+@import 'https://cdn.jsdelivr.net/npm/water.css@2/out/water.min.css';
 
 h1 {
   color: rgb(124, 159, 187);

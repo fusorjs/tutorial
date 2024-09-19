@@ -1,4 +1,4 @@
-import {a, p, section} from '@fusorjs/dom/html';
+import {a, h2, h3, section} from '@fusorjs/dom/html';
 import {a as sa, animate, rect, svg, text} from '@fusorjs/dom/svg';
 import {AnalogClock} from 'component/AnalogClock';
 
@@ -7,20 +7,17 @@ import {Router} from 'share/router';
 // see: https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course
 const xlink_href = 'xlink:href_an_http://www.w3.org/1999/xlink';
 
-export const Svg = (router: Router) =>
+// todo <circle fill-opacity="50%" /> dash-separated in tsx
+
+export const SVG = (router: Router) =>
   section(
-    p(
-      'This is a simple SVG example. See also a ',
-      a('namespaces crash course', {
-        href: `https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course`,
-        target: '_blank',
-      }),
-      '.',
-    ),
+    h2('SVG'),
+
+    h3('Analog Clock'),
 
     AnalogClock(),
 
-    p('Another example'),
+    h3('Rectangle and Link'),
 
     svg(
       {width: 200, height: 200}, //, viewBox: '0 0 100 100'

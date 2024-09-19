@@ -1,11 +1,13 @@
 import {getElement, update} from '@fusorjs/dom';
-import {div, p, section} from '@fusorjs/dom/html';
+import {div, h2, p, section} from '@fusorjs/dom/html';
 
 import {Router} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
 
 export const CustomElement = (_: Router) => {
   const wrapper = section(
+    h2('Custom Element'),
+
     p(
       `Here we will re-implement our interval counter from the `,
       SourceLink('component/LifeCycle.ts', 'LifeCycle.ts'),

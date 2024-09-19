@@ -12,8 +12,9 @@ import {Request} from './Request';
 import {Caching} from './Caching';
 import {Routing} from './Routing';
 import {CustomElement} from './CustomElement';
-import {Svg} from './Svg';
-import {Jsx} from './Jsx';
+import {SVG} from './SVG';
+import {JSX} from './JSX';
+import {MathML} from './MathML';
 
 // ! route component name must match its file name without extension, or have filename property difined (see: Jsx)
 const pageMap = {
@@ -25,8 +26,9 @@ const pageMap = {
   Caching,
   Routing,
   CustomElement,
-  Svg,
-  Jsx,
+  JSX,
+  SVG,
+  MathML,
 };
 
 type Page = keyof typeof pageMap;
@@ -86,19 +88,19 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     // footer links
     nav(
       a('Github', {
-        href: 'https://github.com/fusorjs/tutorial#readme',
+        href: 'https://github.com/fusorjs/tutorial',
         target: '_blank',
       }),
       '-',
       () => SourceLink(getRouteFilename(selectedPage), 'Page Source'),
-      '-',
-      () =>
-        a('Playground', {
-          href:
-            `https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd?file=/src/` +
-            getRouteFilename(selectedPage),
-          target: '_blank',
-        }),
+      // '-',
+      // () =>
+      //   a('Playground', {
+      //     href:
+      //       `https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd?file=/src/` +
+      //       getRouteFilename(selectedPage),
+      //     target: '_blank',
+      //   }),
       {style: 'justify-content:center'},
     ),
   );

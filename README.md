@@ -17,9 +17,11 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 - memoization
 - move TUTORIAL.md from github to this app
 - embed interactive playgrounds into pages with examples (use editor <https://ace.c9.io/>)
+- route observer like in todomvc
 
 ## Done
 
+- mathml page
 - jsx page
 - css usage
 - usage with custom elements

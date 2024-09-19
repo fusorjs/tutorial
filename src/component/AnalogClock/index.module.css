@@ -1,16 +1,25 @@
 .face {
-  stroke-width: 2px;
-  stroke: midnightblue;
+  stroke: #999;
+  stroke-width: 1px;
 }
 
 .hour,
-.min,
-.sec {
-  stroke-width: 1px;
-  fill: #333;
-  stroke: #555;
+.minute,
+.second {
+  stroke-linecap: round;
 }
 
-.sec {
+.hour {
+  stroke: #ddd;
+  stroke-width: 5px;
+}
+
+.minute {
+  stroke: #999;
+  stroke-width: 3px;
+}
+
+.second {
   stroke: #f55;
+  stroke-width: 1px;
 }
