@@ -2,14 +2,12 @@ import {a, h2, h3, section} from '@fusorjs/dom/html';
 import {a as sa, animate, rect, svg, text} from '@fusorjs/dom/svg';
 import {AnalogClock} from 'component/AnalogClock';
 
-import {Router} from 'share/router';
-
 // see: https://developer.mozilla.org/en-US/docs/Web/SVG/Namespaces_Crash_Course
 const xlink_href = 'xlink:href_an_http://www.w3.org/1999/xlink';
 
 // todo <circle fill-opacity="50%" /> dash-separated in tsx
 
-export const SVG = (router: Router) =>
+export const SVG = () =>
   section(
     h2('SVG'),
 

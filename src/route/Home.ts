@@ -1,8 +1,6 @@
 import {a, b, p, section} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
-
-export const Home = (_: Router) =>
+export const Home = () =>
   section(
     p(
       'This is a tutorial application for the ',

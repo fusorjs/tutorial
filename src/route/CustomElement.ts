@@ -1,10 +1,9 @@
 import {getElement, update} from '@fusorjs/dom';
 import {div, h2, p, section} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
 
-export const CustomElement = (_: Router) => {
+export const CustomElement = () => {
   const wrapper = section(
     h2('Custom Element'),
 

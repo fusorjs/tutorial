@@ -1,7 +1,7 @@
-import {Fusion, isUpdatable, update} from '@fusorjs/dom';
+import {Fusion, update} from '@fusorjs/dom';
 import {a, h1, hr, main, nav, span} from '@fusorjs/dom/html';
 
-import {Router, splitRoute} from 'share/router';
+import {NestedRoute, onRoute, pageSeparator} from 'share/route';
 import {SourceLink} from 'component/SourceLink';
 
 import {Home} from './Home';
@@ -18,6 +18,7 @@ import {MathML} from './MathML';
 
 // ! route component name must match its file name without extension, or have filename property difined (see: Jsx)
 const pageMap = {
+  // todo dynamic import
   Home,
   Setup,
   Component,
@@ -33,21 +34,23 @@ const pageMap = {
 
 type Page = keyof typeof pageMap;
 
-const defaultPage: Page = 'Home';
+const splitPage = (route: string, default_: Page = 'Home'): [Page, string] => {
+  let [curr, next] = route.split(pageSeparator, 2);
 
-export const App = ({prevRoute, getNextRoute}: Router) => {
-  let selectedPage: Page;
-  let nextRoute: string;
+  return [(curr in pageMap ? curr : default_) as Page, next ?? ''];
+};
 
-  const updateRoutes = () => {
-    [selectedPage, nextRoute] = splitRoute(getNextRoute()) as any;
-    if (!(selectedPage in pageMap)) selectedPage = defaultPage;
-  };
-
-  updateRoutes();
+export const App = ({prevRoute, getNextRoute}: NestedRoute) => {
+  let [selectedPage, nextRoute] = splitPage(getNextRoute());
 
   return main(
-    updateRoutes,
+    {
+      mount: self =>
+        onRoute(() => {
+          [selectedPage, nextRoute] = splitPage(getNextRoute());
+          update(self);
+        }),
+    },
 
     h1('Fusor Tutorial'),
 
@@ -64,23 +67,16 @@ export const App = ({prevRoute, getNextRoute}: Router) => {
     hr(),
 
     // content depends on the current route
-    (() => {
-      let cachedPage: string;
-      let cachedContent: Fusion;
+    ((cachedPage?: string, cachedContent?: Fusion) => () => {
+      if (cachedPage !== selectedPage) {
+        cachedPage = selectedPage;
+        cachedContent = pageMap[selectedPage]({
+          prevRoute: prevRoute + selectedPage + pageSeparator,
+          getNextRoute: () => nextRoute,
+        });
+      }
 
-      return () => {
-        if (cachedPage === selectedPage) {
-          isUpdatable(cachedContent) && update(cachedContent);
-        } else {
-          cachedPage = selectedPage;
-          cachedContent = pageMap[selectedPage]({
-            prevRoute: prevRoute + selectedPage + '/',
-            getNextRoute: () => nextRoute,
-          });
-        }
-
-        return cachedContent;
-      };
+      return cachedContent;
     })(),
 
     hr(),

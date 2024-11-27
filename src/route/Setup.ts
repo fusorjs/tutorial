@@ -1,9 +1,8 @@
 import {a, code, h4, p, pre, section} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
 import {SourceLink} from 'component/SourceLink';
 
-export const Setup = (_: Router) =>
+export const Setup = () =>
   section(
     h4('Using a bundler'),
 

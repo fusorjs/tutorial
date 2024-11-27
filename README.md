@@ -2,9 +2,16 @@
 
 This is a tutorial application for the [Fusor Javascript library](https://github.com/fusorjs/dom#readme).
 
-**[Demo Website Application](https://fusorjs.github.io/tutorial/)**
+**>> [Run Life Application](https://fusorjs.github.io/tutorial/) <<**
 
 <!-- **[Codesandbox Playground](https://codesandbox.io/p/sandbox/fusor-tutorial-fmm2pd)** -->
+
+## Start
+
+```sh
+npm install
+npm start
+```
 
 ## Build
 
@@ -15,12 +22,13 @@ This is a tutorial application for the [Fusor Javascript library](https://github
 
 - different dynamic array children strategies
 - memoization
-- move TUTORIAL.md from github to this app
+- implement all examples from Fusor's github README, tutorial, optimisation, etc.
+- Lazy loading of pages (dynamic import, code splitting) to increase performance.
 - embed interactive playgrounds into pages with examples (use editor <https://ace.c9.io/>)
-- route observer like in todomvc
 
 ## Done
 
+- add route observer & refactor routing
 - mathml page
 - jsx page
 - css usage

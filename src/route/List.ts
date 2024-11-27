@@ -1,8 +1,8 @@
 import {h2, section} from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
+// todo Optimizations
 
-export const Home = (router: Router) =>
+export const Home = () =>
   section(
     h2('List Optimizations'),
     //

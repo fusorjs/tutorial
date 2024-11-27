@@ -13,11 +13,9 @@ import {
   tr,
 } from '@fusorjs/dom/html';
 
-import {Router} from 'share/router';
-
 type User = {id: number; username: string; name: string; email: string};
 
-export const Request = (router: Router) => {
+export const Request = () => {
   let data: User[] | undefined;
   let error: any;
   let abort: AbortController | undefined;

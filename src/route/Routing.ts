@@ -1,6 +1,7 @@
+import {update} from '@fusorjs/dom';
 import {a, button, div, h4, hr, nav, p, section, span} from '@fusorjs/dom/html';
 
-import {pushRoute, Router, splitRoute} from 'share/router';
+import {onRoute, pageSeparator, pushRoute, NestedRoute} from 'share/route';
 import {SourceLink} from 'component/SourceLink';
 
 const startsPage = 'starts';
@@ -15,24 +16,17 @@ const pageMap = {
 
 type Page = keyof typeof pageMap;
 
-const defaultPage: Page = 'home';
+const splitPage = (route: string, default_: Page = 'home'): [Page, string] => {
+  if (route?.startsWith(startsPage))
+    return [startsPage, route.replace(startsPage, '')];
 
-export const Routing = ({prevRoute, getNextRoute}: Router) => {
-  let selectedPage: Page;
-  let nextRoute: string;
+  let [curr, next] = route.split(pageSeparator, 2);
 
-  const updateRoutes = () => {
-    const route = getNextRoute();
-    if (route?.startsWith(startsPage)) {
-      selectedPage = startsPage;
-      nextRoute = route.replace(startsPage, '');
-    } else {
-      [selectedPage, nextRoute] = splitRoute(getNextRoute()) as any;
-      if (!(selectedPage in pageMap)) selectedPage = defaultPage;
-    }
-  };
+  return [(curr in pageMap ? curr : default_) as Page, next ?? ''];
+};
 
-  updateRoutes();
+export const Routing = ({prevRoute, getNextRoute}: NestedRoute) => {
+  let [selectedPage, nextRoute] = splitPage(getNextRoute());
 
   const Link =
     (page: Page, rest = '') =>
@@ -42,7 +36,13 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
         : a({href: prevRoute + page + rest}, page + rest);
 
   return section(
-    updateRoutes,
+    {
+      mount: self =>
+        onRoute(() => {
+          [selectedPage, nextRoute] = splitPage(getNextRoute());
+          update(self);
+        }),
+    },
 
     p(
       'This is an example of how nested routing could be implemented. This page is the third level, the second level is in ',
@@ -85,5 +85,5 @@ export const Routing = ({prevRoute, getNextRoute}: Router) => {
   );
 };
 
-const RouterInfo = ({prevRoute, getNextRoute}: Router) =>
+const RouterInfo = ({prevRoute, getNextRoute}: NestedRoute) =>
   div(p('prevRoute: ', prevRoute), p('nextRoute: ', getNextRoute));
